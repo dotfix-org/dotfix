@@ -1,0 +1,86 @@
+<div class="container mx-auto p-6">
+  <h1 class="text-2xl font-bold mb-6">Service Request Progress</h1>
+
+  <!-- Progress Bar -->
+  <div class="relative w-full bg-gray-300 rounded-full h-4 mb-6">
+    <div
+      class="absolute top-0 left-0 h-4 bg-blue-500 rounded-full transition-all"
+      [style.width.%]="progress"
+    ></div>
+  </div>
+  <div class="flex justify-between text-sm font-semibold text-gray-700 mb-4">
+    <span>Start</span>
+    <span>In Progress</span>
+    <span>Completed</span>
+  </div>
+
+  <!-- Status -->
+  <div class="bg-gray-100 p-4 rounded-lg mb-6">
+    <p class="text-gray-700">Current Step: {{ currentStep }}</p>
+    <p class="text-gray-700">Status: {{ status }}</p>
+  </div>
+
+  <!-- Step Navigation -->
+  <div class="flex space-x-4">
+    <button
+      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      [disabled]="currentStep === 3"
+      (click)="nextStep()"
+    >
+      Next Step
+    </button>
+    <button
+      class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+      (click)="resetSteps()"
+    >
+      Reset
+    </button>
+  </div>
+
+  <!-- Feedback Modal -->
+  <div
+    *ngIf="showFeedbackModal"
+    class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50"
+  >
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+      <h3 class="text-xl font-bold text-gray-800 mb-4">Rate Our Service</h3>
+      <p class="text-gray-700 mb-4">We'd love to hear your feedback!</p>
+
+      <!-- Star Rating -->
+      <div class="flex justify-center space-x-2 mb-4">
+        <ng-container *ngFor="let star of stars; index as i">
+          <button
+            (click)="rateService(i + 1)"
+            class="text-3xl"
+            [ngClass]="i < rating ? 'text-yellow-400' : 'text-gray-400'"
+          >
+            ★
+          </button>
+        </ng-container>
+      </div>
+
+      <!-- Feedback Section -->
+      <textarea
+        [(ngModel)]="feedback"
+        class="w-full border border-gray-300 p-2 rounded mb-4"
+        rows="3"
+        placeholder="Please leave a comment"
+      ></textarea>
+
+      <div class="flex justify-end space-x-2">
+        <button
+          class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400"
+          (click)="closeFeedbackModal()"
+        >
+          Cancel
+        </button>
+        <button
+          class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          (click)="submitFeedback()"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
