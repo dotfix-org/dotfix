@@ -1,0 +1,68 @@
+<div class="container mx-auto py-8">
+  <!-- Breadcrumb -->
+  <nav class="flex mb-4">
+    <a routerLink="/home" class="text-blue-600">Home</a>
+    <span class="mx-2 text-gray-400">/</span>
+    <span class="text-gray-500">Book Appointment</span>
+  </nav>
+
+  <!-- Booking Form -->
+  <div class="bg-white p-6 rounded shadow-md">
+    <h1 class="text-2xl font-bold mb-4">Book Appointment</h1>
+
+    <!-- Step 1: Image Upload -->
+    <label class="block mb-2 font-medium">Upload Image</label>
+    <input
+      type="file"
+      (change)="onImageUpload($event)"
+      class="w-full mb-4 p-2 border rounded"
+    />
+
+    <!-- Step 2: Comment Section -->
+    <label class="block mb-2 font-medium">Describe Your Issue</label>
+    <textarea
+      class="w-full p-2 border rounded mb-4"
+      rows="4"
+      [(ngModel)]="booking.issue"
+      placeholder="Explain the problem in detail..."
+    ></textarea>
+
+    <!-- Step 3: Location Access -->
+    <label class="block mb-2 font-medium">Location</label>
+    <input
+      type="text"
+      class="w-full mb-4 p-2 border rounded"
+      [(ngModel)]="booking.location"
+      placeholder="Enter your address"
+    />
+    <button
+      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500"
+      (click)="getLocation()"
+    >
+      Use My Current Location
+    </button>
+
+    <!-- Step 4: Contact Details -->
+    <label class="block mt-6 mb-2 font-medium">Contact Details</label>
+    <input
+      type="text"
+      class="w-full mb-4 p-2 border rounded"
+      [(ngModel)]="booking.name"
+      placeholder="Full Name"
+    />
+    <input
+      type="tel"
+      class="w-full mb-4 p-2 border rounded"
+      [(ngModel)]="booking.phone"
+      placeholder="Phone Number"
+    />
+
+    <!-- Submit Button -->
+    <button
+      class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500"
+      (click)="submitBooking()"
+    >
+      Book Appointment
+    </button>
+  </div>
+</div>

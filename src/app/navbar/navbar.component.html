@@ -1,0 +1,41 @@
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img src="https://via.placeholder.com/40" alt="Logo" class="h-10 w-10">
+        <span class="text-xl font-semibold ml-2 text-blue-600">DOTFIX</span>
+      </div>
+      <!-- Links (Hidden on small screens) -->
+      <div class="hidden md:flex space-x-6">
+        <a routerLink="home" class="text-gray-700 hover:text-blue-600 font-medium transition">HOME</a>
+        <a routerLink="/about" class="text-gray-700 hover:text-blue-600 font-medium transition">ABOUT</a>
+        <a routerLink="/contact" class="text-gray-700 hover:text-blue-600 font-medium transition">CONTACT</a>
+        <a routerLink="/monitor" class="text-gray-700 hover:text-blue-600 font-medium transition">MONITOR</a>
+      </div>
+      <!-- Mobile Menu Toggle -->
+      <div class="md:hidden">
+        <button (click)="toggleMenu()" class="text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+      <!-- Buttons -->
+      <div class="hidden md:flex items-center space-x-4">
+        <a routerLink="login" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 border border-gray-300 rounded transition">Login</a>
+        <a routerLink="signup" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded transition">Signup</a>
+      </div>
+    </div>
+    <!-- Mobile Menu (Hidden by default) -->
+    <div [ngClass]="{ 'hidden': !isMenuOpen }" class="md:hidden">
+      <a routerLink="home" class="block px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition">HOME</a>
+      <a routerLink="/about" class="block px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition">ABOUT</a>
+      <a routerLink="/contact" class="block px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition">CONTACT</a>
+      <div class="px-4 py-2">
+        <a routerLink="login" class="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 border border-gray-300 rounded transition mb-2">Login</a>
+        <a routerLink="signup" class="block px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded transition">Signup</a>
+      </div>
+    </div>
+  </div>
+</nav>
